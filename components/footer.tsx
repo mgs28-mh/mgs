@@ -53,7 +53,7 @@ export default function Footer() {
             <ul className="space-y-2 text-slate-400">
               <li className="flex items-start gap-2">
                 <span>📧</span>
-                <span>info@campushub.id</span>
+                <span>info@kammui.id</span>
               </li>
               <li className="flex items-start gap-2">
                 <span>📱</span>
@@ -61,7 +61,7 @@ export default function Footer() {
               </li>
               <li className="flex items-start gap-2">
                 <span>🏢</span>
-                <span>Gedung Student Center, Jakarta</span>
+                <span>Surakarta, Indonesia</span>
               </li>
             </ul>
           </div>
@@ -70,7 +70,7 @@ export default function Footer() {
         {/* Copyright */}
         <div className="border-t border-slate-700 pt-6 flex flex-col md:flex-row justify-between items-center">
           <p className="text-slate-400 text-sm">
-            © {new Date().getFullYear()} CampusHub. All rights reserved.
+            © {new Date().getFullYear()} KAMMUI. All rights reserved.
           </p>
           <div className="flex gap-4 mt-4 md:mt-0">
             <a href="#" className="text-slate-400 hover:text-emerald-400 text-sm">Terms of Service</a>

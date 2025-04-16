@@ -46,28 +46,28 @@ export default function Navbar() {
               href="#home" 
               className="text-slate-700 hover:text-emerald-600 dark:text-slate-300 dark:hover:text-emerald-400 px-3 py-2 font-medium transition"
             >
-              Home
+              Beranda
             </a>
             <a 
               href="#about" 
               className="text-slate-700 hover:text-emerald-600 dark:text-slate-300 dark:hover:text-emerald-400 px-3 py-2 font-medium transition"
             >
-              About
+              Tentang Kami
             </a>
             <a 
               href="#activities" 
               className="text-slate-700 hover:text-emerald-600 dark:text-slate-300 dark:hover:text-emerald-400 px-3 py-2 font-medium transition"
             >
-              Activities
+              Aktivitas
             </a>
             <a 
               href="#contact" 
               className="text-slate-700 hover:text-emerald-600 dark:text-slate-300 dark:hover:text-emerald-400 px-3 py-2 font-medium transition"
             >
-              Contact
+              Kontak
             </a>
             <button className="ml-4 bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-full flex items-center transition">
-              Join Now <FiArrowRight className="ml-1" />
+              Daftar <FiArrowRight className="ml-1" />
             </button>
           </div>
 
@@ -95,31 +95,31 @@ export default function Navbar() {
             className="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-emerald-600 dark:text-slate-300 dark:hover:text-emerald-400"
             onClick={() => setIsOpen(false)}
           >
-            Home
+            Beranda
           </a>
           <a
             href="#about"
             className="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-emerald-600 dark:text-slate-300 dark:hover:text-emerald-400"
             onClick={() => setIsOpen(false)}
           >
-            About
+            Tentang Kami
           </a>
           <a
             href="#activities"
             className="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-emerald-600 dark:text-slate-300 dark:hover:text-emerald-400"
             onClick={() => setIsOpen(false)}
           >
-            Activities
+            Aktivitas
           </a>
           <a
             href="#contact"
             className="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-emerald-600 dark:text-slate-300 dark:hover:text-emerald-400"
             onClick={() => setIsOpen(false)}
           >
-            Contact
+            Kontak
           </a>
           <button className="w-full mt-2 bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-full flex items-center justify-center transition">
-            Join Now <FiArrowRight className="ml-1" />
+            Daftar <FiArrowRight className="ml-1" />
           </button>
         </div>
       </div>
