@@ -6,6 +6,7 @@ import Footer from "@/components/footer";
 
 const poppins = Poppins({
   weight: "400",
+  preload: false,
 });
 
 export const metadata: Metadata = {
