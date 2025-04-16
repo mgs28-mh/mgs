@@ -29,7 +29,7 @@ export default function Navbar() {
   }, []);
 
   return (
-    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white/90 dark:bg-slate-900/90 backdrop-blur-md shadow-sm' : 'bg-white dark:bg-slate-900'}`}>
+    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 will-change:transform  ease-[cubic-bezier(0.4,0,0.2,1)] ${scrolled ? 'bg-white/90 dark:bg-slate-900/90 backdrop-blur-md shadow-sm' : 'bg-white dark:bg-slate-900'}`}>
       <div className="container mx-auto px-5 py-1">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
