@@ -175,22 +175,22 @@ export default function AboutPage() {
                 icon: (
                   <FaUsers className="w-8 h-8 text-emerald-600 dark:text-emerald-400" />
                 ),
-                title: "Kolaborasi",
-                desc: "Kami percaya kekuatan kolaborasi antar disiplin ilmu",
+                title: "Beriman",
+                desc: "Menjadi Mahasiswa yang memiliki Iman dan Takwa Kepada Allah SWT",
               },
               {
                 icon: (
                   <FaLightbulb className="w-8 h-8 text-emerald-600 dark:text-emerald-400" />
                 ),
-                title: "Inovasi",
-                desc: "Mendorong solusi kreatif untuk masalah nyata",
+                title: "Berilmu",
+                desc: "Menjadi Mahasiswa yang memiliki pengetahuan yang luas",
               },
               {
                 icon: (
                   <FaHandshake className="w-8 h-8 text-emerald-600 dark:text-emerald-400" />
                 ),
-                title: "Integritas",
-                desc: "Menjunjung tinggi kejujuran dalam setiap tindakan",
+                title: "Berdaya Guna",
+                desc: "Menjadi Mahasiswa yang bermanfaat bagi lingkungan sekitar",
               },
             ].map((value, index) => (
               <motion.div

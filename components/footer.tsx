@@ -1,4 +1,5 @@
 // components/Footer.tsx
+import Link from 'next/link';
 import { FaGraduationCap, FaInstagram, FaLinkedin, FaYoutube, FaTwitter, FaGithub } from 'react-icons/fa';
 
 export default function Footer() {
@@ -17,21 +18,21 @@ export default function Footer() {
               Platform kolaborasi mahasiswa terbesar di Indonesia
             </p>
             <div className="flex gap-4">
-              <a href="#" className="text-slate-400 hover:text-emerald-400 transition">
+              <Link href="#" className="text-slate-400 hover:text-emerald-400 transition">
                 <FaInstagram className="text-xl" />
-              </a>
-              <a href="#" className="text-slate-400 hover:text-emerald-400 transition">
+              </Link>
+              <Link href="#" className="text-slate-400 hover:text-emerald-400 transition">
                 <FaLinkedin className="text-xl" />
-              </a>
-              <a href="#" className="text-slate-400 hover:text-emerald-400 transition">
+              </Link>
+              <Link href="#" className="text-slate-400 hover:text-emerald-400 transition">
                 <FaYoutube className="text-xl" />
-              </a>
-              <a href="#" className="text-slate-400 hover:text-emerald-400 transition">
+              </Link>
+              <Link href="#" className="text-slate-400 hover:text-emerald-400 transition">
                 <FaTwitter className="text-xl" />
-              </a>
-              <a href="#" className="text-slate-400 hover:text-emerald-400 transition">
+              </Link>
+              <Link href="#" className="text-slate-400 hover:text-emerald-400 transition">
                 <FaGithub className="text-xl" />
-              </a>
+              </Link>
             </div>
           </div>
 
@@ -39,11 +40,11 @@ export default function Footer() {
           <div>
             <h3 className="text-lg font-semibold mb-4 text-white">Tautan Cepat</h3>
             <ul className="space-y-2 text-slate-400">
-              <li><a href="#" className="hover:text-emerald-400 transition">Beranda</a></li>
-              <li><a href="#about" className="hover:text-emerald-400 transition">Tentang Kami</a></li>
-              <li><a href="#activities" className="hover:text-emerald-400 transition">Kegiatan</a></li>
-              <li><a href="#team" className="hover:text-emerald-400 transition">Tim</a></li>
-              <li><a href="#contact" className="hover:text-emerald-400 transition">Kontak</a></li>
+              <li><Link href="/" className="hover:text-emerald-400 transition">Beranda</Link></li>
+              <li><Link href="/about" className="hover:text-emerald-400 transition">Tentang Kami</Link></li>
+              <li><Link href="#activities" className="hover:text-emerald-400 transition">Kegiatan</Link></li>
+              <li><Link href="#team" className="hover:text-emerald-400 transition">Tim</Link></li>
+              <li><Link href="#contact" className="hover:text-emerald-400 transition">Kontak</Link></li>
             </ul>
           </div>
 

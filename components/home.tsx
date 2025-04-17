@@ -24,7 +24,7 @@ export default function HomePage() {
             </h1>
             <p className="text-lg text-slate-600 dark:text-slate-300">
               Temukan komunitas, event kampus, dan kesempatan pengembangan diri
-              bersama ribuan mahasiswa seluruh Indonesia
+              bersama berbagai mahasiswa dari Indonesia
             </p>
             <div className="flex gap-4">
               <button className="bg-emerald-600 text-white px-8 py-3 rounded-full hover:bg-emerald-700 flex items-center gap-2">
@@ -46,9 +46,9 @@ export default function HomePage() {
                 <Image
                   src="/example-1.jpg"
                   alt="Komunitas Mahasiswa"
-                  height={400}
-                  width={600}
-                  className="rounded-xl w-full h-96 object-cover"
+                  height={600}
+                  width={800}
+                  className="rounded-2xl object-cover w-full h-full"
                 />
               </div>
             </div>

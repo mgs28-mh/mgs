@@ -6,26 +6,35 @@ export default function Features() {
   return (
     <section className="bg-emerald-50 dark:bg-slate-800 py-20" id="about">
       <div className="container mx-auto px-6">
-        <h2 className="text-4xl font-bold text-center text-slate-800 dark:text-white mb-16">
-          Kenapa Bergabung?
+      <h2 className="text-4xl text-white font-bold mb-6 leading-normal text-center">
+          Komunitas Mahasiswa
+          <br />
+          Muslim Unggul
+          <span className="text-emerald-600 dark:text-emerald-400">
+            {" "}
+            Indonesia{" "}
+          </span>
         </h2>
+        <p className="text-xl text-white mb-8 max-w-2xl mx-auto text-center">
+          Nilai-Nilai Penting KAMMUI
+        </p>
 
         <div className="grid md:grid-cols-3 gap-8">
           {[
             {
               icon: <FaUsers className="w-full h-full" />,
-              title: "Komunitas Solid",
-              desc: "Temukan teman sejurusan dan minat dari berbagai universitas",
+              title: "Beriman",
+              desc: "Menjadi Mahasiswa yang memiliki Iman dan Takwa Kepada Allah SWT",
             },
             {
               icon: <FaCalendarAlt className="w-full h-full" />,
-              title: "Event Rutin",
-              desc: "Webinar, kompetisi, dan workshop pengembangan skill",
+              title: "Berilmu",
+              desc: "Menjadi Mahasiswa yang memiliki pengetahuan yang luas",
             },
             {
               icon: <FaBookOpen className="w-full h-full" />,
-              title: "Resource Belajar",
-              desc: "Akses materi kuliah, modul, dan penelitian terkini",
+              title: "Berdaya Guna",
+              desc: "Menjadi Mahasiswa yang bermanfaat bagi lingkungan sekitar",
             },
           ].map((item, index) => (
             <motion.div

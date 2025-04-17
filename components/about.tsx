@@ -42,23 +42,22 @@ export default function About() {
             </h3>
 
             <p className="text-lg text-slate-600 dark:text-slate-300">
-              CampusHub didirikan pada tahun 2020 dengan misi menyatukan
-              mahasiswa dari berbagai universitas untuk berkolaborasi, belajar,
-              dan berkembang bersama.
+            KAMMUI menjadi wadah bagi mahasiswa untuk kolaboratif, 
+            progresif, produktivitas tinggi, serta bermanfaat bagi masyarakat.
             </p>
 
             <div className="space-y-4">
               {[
                 {
-                  title: "5000+ Anggota",
-                  desc: "Mahasiswa aktif dari 50+ kampus di Indonesia",
+                  title: "200+ Anggota",
+                  desc: "Mahasiswa aktif dari berbagai kampus di Indonesia",
                 },
                 {
-                  title: "100+ Kegiatan",
+                  title: "10+ Kegiatan",
                   desc: "Event tahunan yang mendukung pengembangan skill",
                 },
                 {
-                  title: "10 Komunitas",
+                  title: "8 divisi",
                   desc: "Berdasarkan minat dan bidang studi",
                 },
               ].map((item, index) => (
