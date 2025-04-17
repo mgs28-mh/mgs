@@ -6,7 +6,7 @@ export default function Features() {
   return (
     <section className="bg-emerald-50 dark:bg-slate-800 py-20" id="about">
       <div className="container mx-auto px-6">
-      <h2 className="text-4xl text-white font-bold mb-6 leading-normal text-center">
+        <h2 className="text-4xl text-white font-bold mb-6 leading-normal text-center">
           Komunitas Mahasiswa
           <br />
           Muslim Unggul
@@ -41,17 +41,24 @@ export default function Features() {
               key={index}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              className="bg-white dark:bg-slate-700 p-8 rounded-2xl shadow-lg"
+              whileHover={{ 
+                y: -10,
+                scale: 1.03,
+                transition: { duration: 0.3 }
+              }}
+              className="bg-white dark:bg-slate-700 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer group"
             >
-              <div className="w-16 h-16 bg-emerald-100 dark:bg-emerald-900 rounded-xl p-4 mb-6">
-                <div className="text-emerald-600 dark:text-emerald-400">
+              <div className="w-16 h-16 bg-emerald-100 dark:bg-emerald-900 rounded-xl p-4 mb-6 group-hover:bg-emerald-200 dark:group-hover:bg-emerald-800 transition-colors duration-300">
+                <div className="text-emerald-600 dark:text-emerald-400 group-hover:text-emerald-700 dark:group-hover:text-emerald-300 transition-colors duration-300">
                   {item.icon}
                 </div>
               </div>
-              <h3 className="text-2xl font-semibold mb-4 text-slate-800 dark:text-white">
+              <h3 className="text-2xl font-semibold mb-4 text-slate-800 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors duration-300">
                 {item.title}
               </h3>
-              <p className="text-slate-600 dark:text-slate-300">{item.desc}</p>
+              <p className="text-slate-600 dark:text-slate-300 group-hover:text-slate-800 dark:group-hover:text-slate-200 transition-colors duration-300">
+                {item.desc}
+              </p>
             </motion.div>
           ))}
         </div>
