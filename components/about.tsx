@@ -6,23 +6,23 @@ import { FiArrowRight } from "react-icons/fi";
 
 export default function About() {
   return (
-    <section id="about" className="py-20 bg-white dark:bg-slate-900">
+    <section id="about" className="py-20 bg-white dark:bg-slate-900 overflow-x-hidden">
       <div className="container mx-auto px-6">
         <div className="flex flex-col md:flex-row gap-12 items-center">
           {/* Image Column */}
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
+            initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             className="flex-1"
           >
             <div className="relative">
-              <div className="absolute -bottom-6 -right-6 w-full h-full border-4 border-emerald-400 rounded-2xl z-0"></div>
+              <div className="absolute -bottom-6 -right-5 w-full h-full border-4 border-emerald-400 rounded-2xl z-0"></div>
               <Image
                 src="/example-2.jpg"
                 alt="Tentang Komunitas"
-                height={400}
-                width={600}
+                width={400}
+                height={600}
                 className="relative z-10 rounded-2xl w-full h-auto object-cover shadow-lg"
               />
             </div>

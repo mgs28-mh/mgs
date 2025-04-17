@@ -3,30 +3,14 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { FiArrowRight } from "react-icons/fi";
 
-// Animation variants
-const container = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.2
-    }
-  }
-};
-
 export default function HomePage() {
   return (
-        <motion.main
-          initial="hidden"
-          animate="visible"
-          variants={container}
-          className="min-h-screen bg-gradient-to-br from-slate-50 to-emerald-50 dark:from-slate-900 dark:to-emerald-900"
-        >
+    <main className="min-h-screen bg-gradient-to-br from-slate-50 to-emerald-50 dark:from-slate-900 dark:to-emerald-900">
       {/* Hero Section */}
-      <section className="mx-auto px-6 py-30">
+      <section className="mx-auto px-10 py-30">
         <div className="flex flex-col md:flex-row items-center gap-12">
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
+            initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             className="flex-1 space-y-6"
           >
@@ -53,7 +37,7 @@ export default function HomePage() {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="flex-1"
           >
@@ -71,6 +55,6 @@ export default function HomePage() {
           </motion.div>
         </div>
       </section>
-    </motion.main>
+    </main>
   );
 }

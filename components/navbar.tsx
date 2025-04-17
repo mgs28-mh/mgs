@@ -1,9 +1,9 @@
 // components/Navbar.tsx
 'use client';
-import Link from 'next/link';
-import { useState, useEffect } from 'react';
-import { FiMenu, FiX, FiArrowRight } from 'react-icons/fi';
-import { FaGraduationCap } from 'react-icons/fa';
+import Link from "next/link";
+import { useState, useEffect } from "react";
+import { FiMenu, FiX, FiArrowRight } from "react-icons/fi";
+import { FaGraduationCap } from "react-icons/fa";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,8 +14,8 @@ export default function Navbar() {
     const handleScroll = () => {
       setScrolled(window.scrollY > 10);
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   // Tutup mobile menu ketika resize
@@ -25,44 +25,50 @@ export default function Navbar() {
         setIsOpen(false);
       }
     };
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   return (
-    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 will-change:transform  ease-[cubic-bezier(0.4,0,0.2,1)] ${scrolled ? 'bg-white/90 dark:bg-slate-900/90 backdrop-blur-md shadow-sm' : 'bg-white dark:bg-slate-900'}`}>
+    <nav
+      className={`fixed top-0 w-full z-50 transition-all duration-300 will-change:transform  ease-[cubic-bezier(0.4,0,0.2,1)] ${
+        scrolled
+          ? "bg-white/90 dark:bg-slate-900/90 backdrop-blur-md shadow-sm"
+          : "bg-white dark:bg-slate-900"
+      }`}
+    >
       <div className="container mx-auto px-5 py-1">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div className="flex-shrink-0 flex items-center">
+          <Link href="/" className="flex-shrink-0 flex items-center">
             <FaGraduationCap className="h-6 w-6 text-emerald-600 dark:text-emerald-400" />
             <span className="ml-2 text-xl font-bold text-slate-800 dark:text-white">
               KAMMUI
             </span>
-          </div>
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            <Link 
-              href="/" 
+            <Link
+              href="/"
               className="text-slate-700 hover:text-emerald-600 dark:text-slate-300 dark:hover:text-emerald-400 px-3 py-2 font-medium transition"
             >
               Beranda
             </Link>
             <Link
-              href="/about" 
+              href="/about"
               className="text-slate-700 hover:text-emerald-600 dark:text-slate-300 dark:hover:text-emerald-400 px-3 py-2 font-medium transition"
             >
               Tentang Kami
             </Link>
-            <Link 
-              href="#activities" 
+            <Link
+              href="#activities"
               className="text-slate-700 hover:text-emerald-600 dark:text-slate-300 dark:hover:text-emerald-400 px-3 py-2 font-medium transition"
             >
               Aktivitas
             </Link>
             <Link
-              href="#contact" 
+              href="#contact"
               className="text-slate-700 hover:text-emerald-600 dark:text-slate-300 dark:hover:text-emerald-400 px-3 py-2 font-medium transition"
             >
               Kontak
@@ -89,7 +95,11 @@ export default function Navbar() {
       </div>
 
       {/* Mobile Menu */}
-      <div className={`md:hidden ${isOpen ? 'block' : 'hidden'} transition-all duration-300 ease-in-out`}>
+      <div
+        className={`md:hidden ${
+          isOpen ? "block" : "hidden"
+        } transition-all duration-300 ease-in-out`}
+      >
         <div className="px-2 pt-2 pb-3 space-y-1 bg-white dark:bg-slate-800 shadow-lg">
           <Link
             href="/"

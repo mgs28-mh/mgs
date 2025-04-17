@@ -5,7 +5,7 @@ import { FiArrowRight } from "react-icons/fi";
 
 export default function Blog() {
   return (
-    <section className="container mx-auto px-6 py-20" id="activities">
+    <section className="container dark:bg-slate-900 mx-auto px-6 py-20" id="activities">
       <h2 className="text-4xl font-bold text-center text-slate-800 dark:text-white mb-16">
         Kegiatan Terbaru
       </h2>
