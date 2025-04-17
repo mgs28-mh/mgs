@@ -1,5 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
+import Link from 'next/link';
 import { FiArrowRight } from "react-icons/fi";
 
 export default function About() {
@@ -88,9 +89,12 @@ export default function About() {
               ))}
             </div>
 
-            <button className="mt-6 px-8 py-3 bg-emerald-600 hover:bg-emerald-700 text-white rounded-full flex items-center gap-2 transition">
-              Kenali Kami Lebih Dekat <FiArrowRight />
-            </button>
+            <Link
+            href="/about'"
+              className="mt-6 px-8 py-3 bg-emerald-600 hover:bg-emerald-700 text-white rounded-full flex items-center gap-2 transition"
+            >
+              Selengkapnya <FiArrowRight />
+            </Link>
           </motion.div>
         </div>
       </div>
