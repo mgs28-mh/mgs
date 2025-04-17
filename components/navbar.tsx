@@ -1,5 +1,6 @@
 // components/Navbar.tsx
 'use client';
+import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { FiMenu, FiX, FiArrowRight } from 'react-icons/fi';
 import { FaGraduationCap } from 'react-icons/fa';
@@ -42,30 +43,30 @@ export default function Navbar() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            <a 
+            <Link 
               href="/" 
               className="text-slate-700 hover:text-emerald-600 dark:text-slate-300 dark:hover:text-emerald-400 px-3 py-2 font-medium transition"
             >
               Beranda
-            </a>
-            <a 
+            </Link>
+            <Link
               href="/about" 
               className="text-slate-700 hover:text-emerald-600 dark:text-slate-300 dark:hover:text-emerald-400 px-3 py-2 font-medium transition"
             >
               Tentang Kami
-            </a>
-            <a 
+            </Link>
+            <Link 
               href="#activities" 
               className="text-slate-700 hover:text-emerald-600 dark:text-slate-300 dark:hover:text-emerald-400 px-3 py-2 font-medium transition"
             >
               Aktivitas
-            </a>
-            <a 
+            </Link>
+            <Link
               href="#contact" 
               className="text-slate-700 hover:text-emerald-600 dark:text-slate-300 dark:hover:text-emerald-400 px-3 py-2 font-medium transition"
             >
               Kontak
-            </a>
+            </Link>
             <button className="ml-4 bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-full flex items-center transition">
               Daftar <FiArrowRight className="ml-1" />
             </button>
@@ -90,34 +91,34 @@ export default function Navbar() {
       {/* Mobile Menu */}
       <div className={`md:hidden ${isOpen ? 'block' : 'hidden'} transition-all duration-300 ease-in-out`}>
         <div className="px-2 pt-2 pb-3 space-y-1 bg-white dark:bg-slate-800 shadow-lg">
-          <a
-            href="#home"
+          <Link
+            href="/"
             className="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-emerald-600 dark:text-slate-300 dark:hover:text-emerald-400"
             onClick={() => setIsOpen(false)}
           >
             Beranda
-          </a>
-          <a
+          </Link>
+          <Link
             href="/about"
             className="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-emerald-600 dark:text-slate-300 dark:hover:text-emerald-400"
             onClick={() => setIsOpen(false)}
           >
             Tentang Kami
-          </a>
-          <a
+          </Link>
+          <Link
             href="#activities"
             className="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-emerald-600 dark:text-slate-300 dark:hover:text-emerald-400"
             onClick={() => setIsOpen(false)}
           >
             Aktivitas
-          </a>
-          <a
+          </Link>
+          <Link
             href="#contact"
             className="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-emerald-600 dark:text-slate-300 dark:hover:text-emerald-400"
             onClick={() => setIsOpen(false)}
           >
             Kontak
-          </a>
+          </Link>
           <button className="w-full mt-2 bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-full flex items-center justify-center transition">
             Daftar <FiArrowRight className="ml-1" />
           </button>
