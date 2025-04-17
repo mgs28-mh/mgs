@@ -1,5 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import Link from 'next/link';
 import { FiArrowRight } from "react-icons/fi";
 
@@ -17,9 +18,11 @@ export default function About() {
           >
             <div className="relative">
               <div className="absolute -bottom-6 -right-6 w-full h-full border-4 border-emerald-400 rounded-2xl z-0"></div>
-              <img
-                src="example-2.jpg"
+              <Image
+                src="/example-2.jpg"
                 alt="Tentang Komunitas"
+                height={400}
+                width={600}
                 className="relative z-10 rounded-2xl w-full h-auto object-cover shadow-lg"
               />
             </div>
@@ -90,7 +93,7 @@ export default function About() {
             </div>
 
             <Link
-            href="/about'"
+            href="/about"
               className="mt-6 px-8 py-3 bg-emerald-600 hover:bg-emerald-700 text-white rounded-full flex items-center gap-2 transition"
             >
               Selengkapnya <FiArrowRight />

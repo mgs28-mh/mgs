@@ -1,5 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { FiArrowRight } from "react-icons/fi";
 
 export default function Blog() {
@@ -17,9 +18,11 @@ export default function Blog() {
             whileInView={{ opacity: 1, scale: 1 }}
             className="bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-lg"
           >
-            <img
-              src={`example-3.jpg`}
+            <Image
+              src={`/example-3.jpg`}
               alt="Event"
+              height={400}
+              width={600}
               className="w-full h-64 object-cover"
             />
             <div className="p-6">
