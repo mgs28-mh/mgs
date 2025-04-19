@@ -15,7 +15,7 @@ export default function HomePage() {
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           className="object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-50 to-emerald-50 dark:from-slate-900 dark:to-emerald-900/80"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-50 to-emerald-50 dark:from-slate-900 dark:to-emerald-900"></div>
       </div>
 
       {/* Hero Section */}

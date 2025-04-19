@@ -19,7 +19,7 @@ export default function About() {
             <div className="relative">
               <div className="absolute -bottom-6 -right-5 w-full h-full border-4 border-emerald-400 rounded-2xl z-0"></div>
               <Image
-                src="/example-2.jpg"
+                src="/example-5.jpg"
                 alt="Tentang Komunitas"
                 width={400}
                 height={600}
