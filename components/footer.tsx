@@ -42,9 +42,8 @@ export default function Footer() {
             <ul className="space-y-2 text-slate-400">
               <li><Link href="/" className="hover:text-emerald-400 transition">Beranda</Link></li>
               <li><Link href="/about" className="hover:text-emerald-400 transition">Tentang Kami</Link></li>
-              <li><Link href="#activities" className="hover:text-emerald-400 transition">Kegiatan</Link></li>
-              <li><Link href="#team" className="hover:text-emerald-400 transition">Tim</Link></li>
-              <li><Link href="#contact" className="hover:text-emerald-400 transition">Kontak</Link></li>
+              <li><Link href="/blog" className="hover:text-emerald-400 transition">Blog</Link></li>
+              <li><Link href="/contact" className="hover:text-emerald-400 transition">Kontak</Link></li>
             </ul>
           </div>
 
