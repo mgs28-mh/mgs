@@ -1,88 +1,131 @@
-"use client";
-import { motion } from "framer-motion";
-import Image from "next/image";
-import { FiArrowRight } from "react-icons/fi";
+'use client';
+
+import { useEffect, useState } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+import { FiArrowRight } from 'react-icons/fi';
+import { motion } from 'framer-motion';
+import { getAllArticles } from '@/lib/api';
+
+// Use the same Article type from your API
+type Article = Awaited<ReturnType<typeof getAllArticles>>[0];
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { y: 20, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.5,
+    },
+  },
+};
 
 export default function Blog() {
-  const posts = [
-    {
-      id: 1,
-      category: "Aktivitas",
-      date: "10 Oktober 2024",
-      title: "Kajian Mahasiswa Muslim",
-      excerpt: "Kegiatan kajian untuk menguatkan iman dan takwa mahasiswa",
-      image: "/example-1.jpg"
-    },
-    {
-      id: 2,
-      category: "Tips",
-      date: "5 November 2024",
-      title: "Menjadi Mahasiswa Muslim Produktif",
-      excerpt: "Berbagai tips untuk mejadi mahasiswa muslim yang produktif",
-      image: "/example-3.jpg"
-    },
-    {
-      id: 3,
-      category: "Update",
-      date: "20 Desember 2024",
-      title: "Kegiatan Ramadhan KAMMUI",
-      excerpt: "Berbagai kegiatan yang dilaksanakan pada bulan Ramadhan 1446 H",
-      image: "/example-4.jpg"
-    }
-  ];
+  const [articles, setArticles] = useState<Article[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchArticles = async () => {
+      try {
+        const data = await getAllArticles();
+        setArticles(data);
+      } catch (error) {
+        console.error('Error fetching articles:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchArticles();
+  }, []);
+
+  if (loading) {
+    return (
+      <main className="flex min-h-screen flex-col items-center justify-center p-24 bg-blend-darken">
+        <div className="animate-pulse text-white">Loading articles...</div>
+      </main>
+    );
+  }
 
   return (
-    <section className="container mx-auto px-4 py-16">
-      <div className="text-center mb-12">
-        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
-          Blog & Artikel
-        </h2>
-        <p className="mt-4 text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-          Temukan artikel terbaru seputar pengembangan web dan teknologi terkini
-        </p>
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {posts.map((post) => (
-          <motion.article 
-            key={post.id}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+    <main className="flex min-h-screen flex-col items-center justify-between p-24 bg-blend-darken">
+      <section className="w-full pt-12">
+        <div className="mx-auto container space-y-12 px-4 md:px-6">
+          <motion.div 
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
-            className="group bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300"
+            className="flex flex-col items-center justify-center space-y-4 text-center"
           >
-            <div className="relative h-48 overflow-hidden">
-              <Image 
-                src={post.image}
-                alt={post.title}
-                fill
-                className="object-cover transition-transform duration-500 group-hover:scale-105"
-              />
-            </div>
-            <div className="p-6">
-              <div className="flex justify-between items-center mb-3">
-                <span className="bg-emerald-100 text-emerald-600 px-3 py-1 rounded-full text-sm">
-                  {post.category}
-                </span>
-                <span className="text-sm text-gray-500 dark:text-gray-400">
-                  {post.date}
-                </span>
-              </div>
-              <h3 className="text-xl font-bold mb-2 text-gray-800 dark:text-white group-hover:text-emerald-600 transition-colors">
-                {post.title}
-              </h3>
-              <p className="text-gray-600 dark:text-gray-300 mb-4">
-                {post.excerpt}
+            <div className="space-y-2">
+              <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl text-white">
+                Blog & Artikel
+              </h1>
+              <p className="max-w-[900px] text-white md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                Dapatkan Berbagai Artikel Tentang Pendidikan dan Kegiatan Mahasiswa
               </p>
-              <a href="#" className="text-emerald-600 dark:text-emerald-400 flex items-center gap-2 hover:underline">
-                Baca selengkapnya
-                <FiArrowRight className="ml-2" />
-              </a>
             </div>
-          </motion.article>
-        ))}
-      </div>
-    </section>
+          </motion.div>
+
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            className="space-y-12"
+          >
+            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+              {articles.map((article) => (
+                <motion.article
+                  key={article.sys.id}
+                  variants={itemVariants}
+                  whileHover={{ scale: 1.03 }}
+                  className="h-full flex flex-col rounded-lg shadow-lg overflow-hidden border border-slate-900 hover:border-green-300 transition-colors"
+                >
+                  {article.articleImage?.url && (
+                    <Image
+                      alt={article.title}
+                      className="aspect-[3/2] object-cover w-full"
+                      height="263"
+                      src={article.articleImage.url}
+                      width="350"
+                      priority={false}
+                    />
+                  )}
+                  <div className="flex-1 p-6 bg-slate-900">
+                    <Link href={`/blog/${article.slug}`}>
+                      <h3 className="text-2xl font-bold leading-tight text-white py-4 hover:text-green-700 transition-colors">
+                        {article.title}
+                      </h3>
+                    </Link>
+                    <div className="flex pt-1 justify-start">
+                      <Link
+                        className="text-emerald-600 dark:text-emerald-400 flex items-center gap-2 hover:underline"
+                        href={`/blog/${article.slug}`}
+                      >
+                        Baca selengkapnya
+                        <motion.span whileHover={{ x: 5 }}>
+                          <FiArrowRight className="ml-2" />
+                        </motion.span>
+                      </Link>
+                    </div>
+                  </div>
+                </motion.article>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </section>
+    </main>
   );
 }

@@ -65,7 +65,7 @@ export default function Navbar() {
               href="#activities"
               className="text-slate-700 hover:text-emerald-600 dark:text-slate-300 dark:hover:text-emerald-400 px-3 py-2 font-medium transition"
             >
-              Aktivitas
+              Blog
             </Link>
             <Link
               href="#contact"

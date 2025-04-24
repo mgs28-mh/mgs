@@ -9,8 +9,29 @@ const compat = new FlatCompat({
   baseDirectory: __dirname,
 });
 
-const eslintConfig = [
-  ...compat.extends("next/core-web-vitals", "next/typescript"),
-];
+export default [
+  // Konfigurasi umum linting
+  ...compat.config({
+    extends: [
+      "next/core-web-vitals",
+      "plugin:@typescript-eslint/recommended"
+    ],
+    plugins: ["@typescript-eslint"],
+    rules: {
+      "@typescript-eslint/no-explicit-any": "off",
+      "@typescript-eslint/no-unused-vars": ["error"],
+      "@typescript-eslint/explicit-module-boundary-types": "off"
+    },
+  }),
 
-export default eslintConfig;
+  // Opsional: atur file pattern dan overrides jika dibutuhkan
+  {
+    files: ["**/*.ts", "**/*.tsx"],
+    languageOptions: {
+      parserOptions: {
+        project: "./tsconfig.json",
+        sourceType: "module"
+      },
+    },
+  },
+];
