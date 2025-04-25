@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import { Poppins } from "next/font/google";
+import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import { Providers } from "./providers";
 
-const poppins = Poppins({
-  weight: "400",
+const fonts = Plus_Jakarta_Sans({
+  weight: [ "400", "600"],
   preload: false,
 });
 
@@ -22,7 +22,7 @@ export default function RootLayout({
 }>) {
   return (
     <html suppressHydrationWarning lang="en">
-      <body className={`bg-[#FCFCFC] dark:bg-black ${poppins.className}`}>
+      <body className={`bg-[#FCFCFC] dark:bg-black ${fonts.className}`}>
         {children}
         <Providers>
           <Navbar />
