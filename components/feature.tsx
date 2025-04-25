@@ -19,7 +19,7 @@ export default function Features() {
           Nilai-Nilai Penting KAMMUI
         </p>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-3 gap-8 items-center justify-center text-center">
           {[
             {
               icon: <FaUsers className="w-full h-full" />,
@@ -46,17 +46,17 @@ export default function Features() {
                 scale: 1.03,
                 transition: { duration: 0.3 }
               }}
-              className="bg-white dark:bg-slate-700 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer group"
+              className="bg-white dark:bg-slate-700 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer group flex flex-col items-center"
             >
-              <div className="w-16 h-16 bg-emerald-100 dark:bg-emerald-900 rounded-xl p-4 mb-6 group-hover:bg-emerald-200 dark:group-hover:bg-emerald-800 transition-colors duration-300">
+              <div className="w-16 h-16 bg-emerald-100 dark:bg-emerald-900 rounded-xl p-4 mb-6 group-hover:bg-emerald-200 dark:group-hover:bg-emerald-800 transition-colors duration-300 flex items-center justify-center">
                 <div className="text-emerald-600 dark:text-emerald-400 group-hover:text-emerald-700 dark:group-hover:text-emerald-300 transition-colors duration-300">
                   {item.icon}
                 </div>
               </div>
-              <h3 className="text-2xl font-semibold mb-4 text-slate-800 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors duration-300">
+              <h3 className="text-2xl font-semibold mb-4 text-slate-800 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors duration-300 text-center">
                 {item.title}
               </h3>
-              <p className="text-slate-600 dark:text-slate-300 group-hover:text-slate-800 dark:group-hover:text-slate-200 transition-colors duration-300">
+              <p className="text-slate-600 dark:text-slate-300 group-hover:text-slate-800 dark:group-hover:text-slate-200 transition-colors duration-300 text-center">
                 {item.desc}
               </p>
             </motion.div>

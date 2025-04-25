@@ -167,7 +167,7 @@ export default function AboutPage() {
           </motion.div>
 
           <motion.div 
-            className="grid md:grid-cols-3 gap-8"
+            className="grid md:grid-cols-3 gap-8 items-center justify-center text-center"
             variants={container}
           >
             {[
@@ -200,7 +200,7 @@ export default function AboutPage() {
                 className="bg-white dark:bg-gray-700 p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow"
               >
                 <motion.div 
-                  className="mb-6"
+                  className="mb-6 flex items-center justify-center"
                   whileHover={{ rotate: 5 }}
                 >
                   {value.icon}
