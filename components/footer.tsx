@@ -1,5 +1,6 @@
 // components/Footer.tsx
 import Link from 'next/link';
+import Image from 'next/image';
 import { FaGraduationCap, FaInstagram, FaLinkedin, FaYoutube, FaTwitter, FaGithub } from 'react-icons/fa';
 
 export default function Footer() {
@@ -11,7 +12,13 @@ export default function Footer() {
           {/* Brand Info */}
           <div className="space-y-4">
             <div className="flex items-center gap-2">
-              <FaGraduationCap className="text-2xl text-emerald-400" />
+            <Image
+              src="/logo.webp"
+              alt="KAMMUI"
+              width={30}
+              height={30}
+              priority
+            />
               <span className="text-xl font-bold">KAMMUI</span>
             </div>
             <p className="text-slate-400">

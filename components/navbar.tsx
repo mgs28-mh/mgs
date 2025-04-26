@@ -1,9 +1,9 @@
 // components/Navbar.tsx
-'use client';
+"use client";
 import Link from "next/link";
+import Image from "next/image";
 import { useState, useEffect } from "react";
 import { FiMenu, FiX, FiArrowRight } from "react-icons/fi";
-import { FaGraduationCap } from "react-icons/fa";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -41,7 +41,13 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link href="/" className="flex-shrink-0 flex items-center">
-            <FaGraduationCap className="h-6 w-6 text-emerald-600 dark:text-emerald-400" />
+            <Image
+              src="/logo.webp"
+              alt="KAMMUI"
+              width={30}
+              height={30}
+              priority
+            />
             <span className="ml-2 text-xl font-bold text-slate-800 dark:text-white">
               KAMMUI
             </span>
