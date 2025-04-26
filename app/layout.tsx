@@ -11,8 +11,9 @@ const fonts = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "KAMMUI",
+  title: "KAMMUI | Komunitas Mahasiswa Muslim Unggul Indonesia",
   description: "Komunitas Mahasiswa Muslim Unggul Indonesia",
+  keywords: ['Komunitas', 'Pendidikan', 'Mahasiswa', 'Muslim', 'Unggul', 'Mahasiswa Unggul', 'Lingkungan Positif'],
 };
 
 export default function RootLayout({

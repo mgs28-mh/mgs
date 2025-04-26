@@ -2,8 +2,8 @@ import AboutPage from "@/components/about-page";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "About page of KAMMUI",
-    description: "This is About Page",
+    title: "Tentang Kami | KAMMUI",
+    description: "Komunitas Mahasiswa Muslim Unggul Indonesia",
     // other metadata
   };
 
