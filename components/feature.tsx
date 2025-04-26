@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import { FaUsers, FaCalendarAlt, FaBookOpen, FaLeaf, FaLightbulb, FaHandsHelping } from "react-icons/fa";
+import { FaUsers, FaLightbulb, FaHandsHelping } from "react-icons/fa";
 
 export default function Features() {
   return (
