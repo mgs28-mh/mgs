@@ -4,12 +4,12 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import { FiMenu, FiX, FiArrowRight } from "react-icons/fi";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-  // Efek scroll untuk navbar
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 10);
@@ -18,7 +18,6 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Tutup mobile menu ketika resize
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth > 768) {
@@ -30,15 +29,16 @@ export default function Navbar() {
   }, []);
 
   return (
-    <nav
-      className={`fixed top-0 w-full z-50 transition-all duration-300 will-change:transform  ease-[cubic-bezier(0.4,0,0.2,1)] ${
+    <motion.nav
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-white/90 dark:bg-slate-900/90 backdrop-blur-md shadow-sm"
+          ? "bg-white dark:bg-slate-900 shadow-sm"
           : "bg-white dark:bg-slate-900"
       }`}
     >
       <div className="container mx-auto px-5 py-1">
         <div className="flex items-center justify-between h-16">
+          
           {/* Logo */}
           <Link href="/" className="flex-shrink-0 flex items-center">
             <Image
@@ -55,43 +55,31 @@ export default function Navbar() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-5">
-            <Link
-              href="/"
-              className="text-slate-700 hover:text-emerald-600 dark:text-slate-300 dark:hover:text-emerald-400 px-3 py-2 font-medium transition"
-            >
-              Beranda
+            {["/", "/about", "/blog", "/contact"].map((path, index) => (
+              <Link
+                key={index}
+                href={path}
+                className="text-white hover:text-emerald-600 dark:text-slate-300 dark:hover:text-emerald-400 px-3 py-2 font-medium transition"
+              >
+                {["Beranda", "Tentang Kami", "Blog", "Kontak"][index]}
+              </Link>
+            ))}
+            <Link href="/register">
+              <button className="ml-4 bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-full flex items-center transition">
+                Daftar <FiArrowRight className="ml-1" />
+              </button>
             </Link>
-            <Link
-              href="/about"
-              className="text-slate-700 hover:text-emerald-600 dark:text-slate-300 dark:hover:text-emerald-400 px-3 py-2 font-medium transition"
-            >
-              Tentang Kami
-            </Link>
-            <Link
-              href="/blog"
-              className="text-slate-700 hover:text-emerald-600 dark:text-slate-300 dark:hover:text-emerald-400 px-3 py-2 font-medium transition"
-            >
-              Blog
-            </Link>
-            <Link
-              href="/contact"
-              className="text-slate-700 hover:text-emerald-600 dark:text-slate-300 dark:hover:text-emerald-400 px-3 py-2 font-medium transition"
-            >
-              Kontak
-            </Link>
-            <button className="ml-4 bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-full flex items-center transition">
-              Daftar <FiArrowRight className="ml-1" />
-            </button>
           </div>
 
-          {/* Mobile menu button */}
+          {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-slate-700 dark:text-slate-300 hover:text-emerald-600 dark:hover:text-emerald-400 focus:outline-none"
+              className="inline-flex items-center justify-center p-2 rounded-md text-slate-700 dark:text-slate-300 hover:text-emerald-600 focus:outline-none"
+              aria-label={isOpen ? "Close menu" : "Open menu"}
             >
               {isOpen ? (
-                <FiX className="h-6 w-6" />
+                <FiX className="h-6 w-6 text-emerald-500" />
               ) : (
                 <FiMenu className="h-6 w-6" />
               )}
@@ -100,46 +88,60 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Menu */}
-      <div
-        className={`md:hidden ${
-          isOpen ? "block" : "hidden"
-        } transition-all duration-300 ease-in-out`}
-      >
-        <div className="px-2 pt-2 pb-3 space-y-1 bg-white dark:bg-slate-800 shadow-lg">
-          <Link
-            href="/"
-            className="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-emerald-600 dark:text-slate-300 dark:hover:text-emerald-400"
-            onClick={() => setIsOpen(false)}
-          >
-            Beranda
-          </Link>
-          <Link
-            href="/about"
-            className="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-emerald-600 dark:text-slate-300 dark:hover:text-emerald-400"
-            onClick={() => setIsOpen(false)}
-          >
-            Tentang Kami
-          </Link>
-          <Link
-            href="/blog"
-            className="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-emerald-600 dark:text-slate-300 dark:hover:text-emerald-400"
-            onClick={() => setIsOpen(false)}
-          >
-            Blog
-          </Link>
-          <Link
-            href="/contact"
-            className="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-emerald-600 dark:text-slate-300 dark:hover:text-emerald-400"
-            onClick={() => setIsOpen(false)}
-          >
-            Kontak
-          </Link>
-          <button className="w-full mt-2 bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-full flex items-center justify-center transition">
-            Daftar <FiArrowRight className="ml-1" />
-          </button>
-        </div>
-      </div>
-    </nav>
+      {/* Mobile Menu - Now with solid background */}
+      <AnimatePresence>
+        {isOpen && (
+          <>
+            {/* Overlay */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 0.5 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 bg-black z-40 md:hidden"
+              onClick={() => setIsOpen(false)}
+            />
+
+            {/* Menu Content with solid background */}
+            <motion.div
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ type: "spring", stiffness: 300, damping: 30 }}
+              className="fixed top-0 right-0 h-full w-full max-w-sm bg-white dark:bg-slate-900 z-50" // Removed transparency
+            >
+              {/* Header with close button */}
+              <div className="flex justify-end p-4">
+                <button
+                  onClick={() => setIsOpen(false)}
+                  className="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800"
+                  aria-label="Close menu"
+                >
+                  <FiX className="h-6 w-6 text-emerald-500" />
+                </button>
+              </div>
+
+              {/* Main Menu Items */}
+              <div className="px-6 pb-6 space-y-4">
+                {["/", "/about", "/blog", "/contact"].map((path, index) => (
+                  <Link
+                    key={index}
+                    href={path}
+                    className="block text-lg font-medium text-white hover:text-emerald-600 dark:text-slate-300 dark:hover:text-emerald-400 py-3 transition"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    {["Beranda", "Tentang Kami", "Blog", "Kontak"][index]}
+                  </Link>
+                ))}
+                <Link href="/register" className="block mt-6">
+                  <button className="w-full bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-3 rounded-full flex items-center justify-center transition">
+                    Daftar <FiArrowRight className="ml-2" />
+                  </button>
+                </Link>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+    </motion.nav>
   );
 }
