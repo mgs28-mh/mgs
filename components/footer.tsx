@@ -1,7 +1,7 @@
 // components/Footer.tsx
 import Link from 'next/link';
 import Image from 'next/image';
-import { FaGraduationCap, FaInstagram, FaLinkedin, FaYoutube, FaTwitter, FaGithub } from 'react-icons/fa';
+import { FaInstagram, FaLinkedin, FaYoutube, FaTwitter, FaGithub } from 'react-icons/fa';
 
 export default function Footer() {
   return (
