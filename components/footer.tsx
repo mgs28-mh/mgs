@@ -5,7 +5,7 @@ import { FaInstagram, FaLinkedin, FaYoutube, } from 'react-icons/fa';
 
 export default function Footer() {
   return (
-    <footer className="bg-slate-900 text-white pt-12 pb-6">
+    <footer className="bg-slate-800 text-white pt-12 pb-6">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           
@@ -21,8 +21,8 @@ export default function Footer() {
             />
               <span className="text-xl font-bold">KAMMUI</span>
             </div>
-            <p className="text-white">
-              Platform kolaborasi mahasiswa terbesar di Indonesia
+            <p className="text-slate-200">
+              Komunitas Mahasiswa Muslim Unggul Indonesia
             </p>
             <div className="flex gap-4">
               <Link href="#" className="text-white hover:text-emerald-400 transition">
@@ -39,8 +39,8 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-lg font-semibold mb-4 text-white">Tautan Cepat</h3>
-            <ul className="space-y-2 text-white">
+            <h3 className="text-lg font-semibold mb-4 text-emerald-400">Tautan Cepat</h3>
+            <ul className="space-y-2 text-slate-200">
               <li><Link href="/" className="hover:text-emerald-400 transition">Beranda</Link></li>
               <li><Link href="/about" className="hover:text-emerald-400 transition">Tentang Kami</Link></li>
               <li><Link href="/blog" className="hover:text-emerald-400 transition">Blog</Link></li>
@@ -50,8 +50,8 @@ export default function Footer() {
 
           {/* Contact Info */}
           <div>
-            <h3 className="text-lg font-semibold mb-4 text-white">Kontak</h3>
-            <ul className="space-y-2 text-white">
+            <h3 className="text-lg font-semibold mb-4 text-emerald-400">Kontak</h3>
+            <ul className="space-y-2 text-slate-200">
               <li className="flex items-start gap-2">
                 <span>📧</span>
                 <span>info@kammui.id</span>
