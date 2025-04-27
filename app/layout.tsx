@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import { Providers } from "./providers";
+import { Analytics } from '@vercel/analytics/next';
 
 const fonts = Plus_Jakarta_Sans({
   weight: [ "400", "600"],
@@ -29,6 +30,7 @@ export default function RootLayout({
           <Navbar />
           <Footer />
         </Providers>
+        <Analytics />
       </body>
     </html>
   );
