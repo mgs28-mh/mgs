@@ -3,11 +3,9 @@
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { FiArrowRight } from 'react-icons/fi';
+import { FiArrowRight, FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import { motion } from 'framer-motion';
-import { getAllArticles } from '@/lib/api';
-
-type Article = Awaited<ReturnType<typeof getAllArticles>>[0];
+import { getAllArticles, PaginatedArticles } from '@/lib/api-blog';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -31,14 +29,25 @@ const itemVariants = {
 };
 
 export default function BlogPost() {
-  const [articles, setArticles] = useState<Article[]>([]);
+  const [articlesData, setArticlesData] = useState<PaginatedArticles>({
+    articles: [],
+    total: 0,
+    currentPage: 1,
+    totalPages: 1,
+  });
   const [loading, setLoading] = useState(true);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 3
 
   useEffect(() => {
     const fetchArticles = async () => {
       try {
-        const data = await getAllArticles();
-        setArticles(data);
+        setLoading(true);
+        const data = await getAllArticles(
+          itemsPerPage,
+          (currentPage - 1) * itemsPerPage
+        );
+        setArticlesData(data);
       } catch (error) {
         console.error('Error fetching articles:', error);
       } finally {
@@ -47,7 +56,11 @@ export default function BlogPost() {
     };
 
     fetchArticles();
-  }, []);
+  }, [currentPage]);
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+  };
 
   if (loading) {
     return (
@@ -84,7 +97,7 @@ export default function BlogPost() {
             className="space-y-6 sm:space-y-12"
           >
             <div className="grid gap-4 sm:gap-6 md:gap-8 sm:grid-cols-2 lg:grid-cols-3">
-              {articles.map((article) => (
+              {articlesData.articles.map((article) => (
                 <motion.article
                   key={article.sys.id}
                   variants={itemVariants}
@@ -124,6 +137,37 @@ export default function BlogPost() {
                 </motion.article>
               ))}
             </div>
+
+            {/* Pagination Controls */}
+            {articlesData.totalPages > 1 && (
+              <div className="flex justify-center items-center gap-2 mt-8">
+                <button
+                  onClick={() => handlePageChange(currentPage - 1)}
+                  disabled={currentPage === 1}
+                  className={`p-2 rounded-md ${currentPage === 1 ? 'text-gray-500 cursor-not-allowed' : 'text-white hover:bg-slate-800'}`}
+                >
+                  <FiChevronLeft size={20} />
+                </button>
+
+                {Array.from({ length: articlesData.totalPages }, (_, i) => i + 1).map((page) => (
+                  <button
+                    key={page}
+                    onClick={() => handlePageChange(page)}
+                    className={`w-10 h-10 rounded-md ${currentPage === page ? 'bg-emerald-600 text-white' : 'text-white hover:bg-slate-800'}`}
+                  >
+                    {page}
+                  </button>
+                ))}
+
+                <button
+                  onClick={() => handlePageChange(currentPage + 1)}
+                  disabled={currentPage === articlesData.totalPages}
+                  className={`p-2 rounded-md ${currentPage === articlesData.totalPages ? 'text-gray-500 cursor-not-allowed' : 'text-white hover:bg-slate-800'}`}
+                >
+                  <FiChevronRight size={20} />
+                </button>
+              </div>
+            )}
           </motion.div>
         </div>
       </section>

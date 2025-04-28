@@ -2,7 +2,7 @@ import BlogPost from "@/components/blog-page";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "KAMMUI | Blog",
+  title: "Blog | KAMMUI",
   description: "Blog dan Artikel tentang KAMMUI",
   // other metadata
 };
