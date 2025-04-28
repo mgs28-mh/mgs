@@ -1,12 +1,15 @@
 "use client";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import Link from 'next/link';
+import Link from "next/link";
 import { FiArrowRight } from "react-icons/fi";
 
 export default function About() {
   return (
-    <section id="about" className="py-20 bg-white dark:bg-slate-900 overflow-x-hidden">
+    <section
+      id="about"
+      className="py-20 bg-white dark:bg-slate-900 overflow-x-hidden"
+    >
       <div className="container mx-auto px-6">
         <div className="flex flex-col md:flex-row gap-12 items-center">
           {/* Image Column */}
@@ -42,8 +45,8 @@ export default function About() {
             </h3>
 
             <p className="text-lg text-slate-600 dark:text-slate-300">
-            KAMMUI menjadi wadah bagi mahasiswa untuk kolaboratif, 
-            progresif, produktivitas tinggi, serta bermanfaat bagi masyarakat.
+              KAMMUI menjadi wadah bagi mahasiswa untuk kolaboratif, progresif,
+              produktivitas tinggi, serta bermanfaat bagi masyarakat.
             </p>
 
             <div className="space-y-4">
@@ -92,8 +95,8 @@ export default function About() {
             </div>
 
             <Link
-            href="/about"
-              className="mt-6 px-8 py-3 bg-emerald-600 hover:bg-emerald-700 text-white rounded-full flex items-center gap-2 transition"
+              href="/about"
+              className="mt-6 px-8 py-3 bg-emerald-600 hover:bg-emerald-700 text-white rounded-full inline-flex items-center gap-2 transition"
             >
               Selengkapnya <FiArrowRight />
             </Link>
