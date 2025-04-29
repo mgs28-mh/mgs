@@ -9,6 +9,7 @@ import { motion, AnimatePresence } from "framer-motion";
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [activeLink, setActiveLink] = useState("/");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -28,54 +29,85 @@ export default function Navbar() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  const navLinks = [
+    { path: "/", label: "Beranda" },
+    { path: "/about", label: "Tentang Kami" },
+    { path: "/blog", label: "Blog" },
+    { path: "/contact", label: "Kontak" },
+  ];
+
   return (
     <motion.nav
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-white dark:bg-slate-900 shadow-sm"
+          ? "bg-white/90 dark:bg-slate-900/90 backdrop-blur-sm shadow-sm"
           : "bg-white dark:bg-slate-900"
       }`}
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.5 }}
     >
-      <div className="container mx-auto px-5 py-1">
-        <div className="flex items-center justify-between h-16">
-          
+      <div className="container mx-auto px-4 sm:px-6">
+        <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <Link href="/" className="flex-shrink-0 flex items-center">
-            <Image
-              src="/logo.webp"
-              alt="KAMMUI"
-              width={30}
-              height={30}
-              priority
-            />
-            <span className="ml-2 text-xl font-bold text-slate-800 dark:text-white">
+          <Link
+            href="/"
+            className="flex-shrink-0 flex items-center group"
+            onClick={() => setActiveLink("/")}
+          >
+            <motion.div
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              className="relative h-8 w-8 md:h-10 md:w-10"
+            >
+              <Image
+                src="/logo.webp"
+                alt="KAMMUI"
+                fill
+                sizes="(max-width: 768px) 32px, 40px"
+                priority
+                className="object-contain"
+              />
+            </motion.div>
+            <span className="ml-2 text-xl md:text-2xl font-bold text-slate-800 dark:text-white group-hover:text-emerald-600 transition-colors">
               KAMMUI
             </span>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-5">
-            {["/", "/about", "/blog", "/contact"].map((path, index) => (
+          <div className="hidden md:flex items-center space-x-1">
+            {navLinks.map((link) => (
               <Link
-                key={index}
-                href={path}
-                className="text-white hover:text-emerald-600 dark:text-slate-300 dark:hover:text-emerald-400 px-3 py-2 font-medium transition"
+                key={link.path}
+                href={link.path}
+                className={`px-4 py-2 rounded-lg font-bold transition-colors ${
+                  activeLink === link.path
+                    ? "text-emerald-600 dark:text-emerald-400"
+                    : "text-slate-700 hover:text-emerald-600 dark:text-slate-300 dark:hover:text-emerald-400"
+                }`}
+                onClick={() => setActiveLink(link.path)}
               >
-                {["Beranda", "Tentang Kami", "Blog", "Kontak"][index]}
+                {link.label}
               </Link>
             ))}
-            <Link href="/register">
-              <button className="ml-4 bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-full flex items-center transition">
-                Daftar <FiArrowRight className="ml-1" />
-              </button>
+            <Link href="/register" className="ml-2">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white px-6 py-2 rounded-full flex items-center space-x-2 transition-all shadow-lg hover:shadow-emerald-500/20"
+              >
+                <span>Daftar</span>
+                <FiArrowRight className="w-4 h-4" />
+              </motion.button>
             </Link>
           </div>
 
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center">
-            <button
+            <motion.button
               onClick={() => setIsOpen(!isOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-slate-700 dark:text-slate-300 hover:text-emerald-600 focus:outline-none"
+              whileTap={{ scale: 0.95 }}
+              className="inline-flex items-center justify-center p-2 rounded-lg text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 focus:outline-none"
               aria-label={isOpen ? "Close menu" : "Open menu"}
             >
               {isOpen ? (
@@ -83,12 +115,12 @@ export default function Navbar() {
               ) : (
                 <FiMenu className="h-6 w-6" />
               )}
-            </button>
+            </motion.button>
           </div>
         </div>
       </div>
 
-      {/* Mobile Menu - Now with solid background */}
+      {/* Mobile Menu */}
       <AnimatePresence>
         {isOpen && (
           <>
@@ -101,42 +133,76 @@ export default function Navbar() {
               onClick={() => setIsOpen(false)}
             />
 
-            {/* Menu Content with solid background */}
+            {/* Menu Content */}
             <motion.div
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
-              className="fixed top-0 right-0 h-full w-full max-w-sm bg-white dark:bg-slate-900 z-50" // Removed transparency
+              className="fixed top-0 right-0 h-full w-full max-w-xs bg-white dark:bg-slate-900 shadow-2xl z-50"
             >
-              {/* Header with close button */}
-              <div className="flex justify-end p-4">
-                <button
-                  onClick={() => setIsOpen(false)}
-                  className="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800"
-                  aria-label="Close menu"
-                >
-                  <FiX className="h-6 w-6 text-emerald-500" />
-                </button>
-              </div>
-
-              {/* Main Menu Items */}
-              <div className="px-6 pb-6 space-y-4">
-                {["/", "/about", "/blog", "/contact"].map((path, index) => (
+              <div className="flex flex-col h-full">
+                {/* Header with close button */}
+                <div className="flex justify-between items-center p-4 border-b border-slate-200 dark:border-slate-800">
                   <Link
-                    key={index}
-                    href={path}
-                    className="block text-lg font-medium text-white hover:text-emerald-600 dark:text-slate-300 dark:hover:text-emerald-400 py-3 transition"
-                    onClick={() => setIsOpen(false)}
+                    href="/"
+                    className="flex items-center"
+                    onClick={() => {
+                      setActiveLink("/");
+                      setIsOpen(false);
+                    }}
                   >
-                    {["Beranda", "Tentang Kami", "Blog", "Kontak"][index]}
+                    <Image
+                      src="/logo.webp"
+                      alt="KAMMUI"
+                      width={28}
+                      height={28}
+                    />
+                    <span className="ml-2 text-xl font-bold text-slate-800 dark:text-white">
+                      KAMMUI
+                    </span>
                   </Link>
-                ))}
-                <Link href="/register" className="block mt-6">
-                  <button className="w-full bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-3 rounded-full flex items-center justify-center transition">
-                    Daftar <FiArrowRight className="ml-2" />
+                  <button
+                    onClick={() => setIsOpen(false)}
+                    className="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800"
+                    aria-label="Close menu"
+                  >
+                    <FiX className="h-6 w-6 text-emerald-500" />
                   </button>
-                </Link>
+                </div>
+
+                {/* Main Menu Items */}
+                <div className="flex-1 overflow-y-auto p-4 space-y-2">
+                  {navLinks.map((link) => (
+                    <Link
+                      key={link.path}
+                      href={link.path}
+                      className={`block px-4 py-3 rounded-lg font-bold text-lg ${
+                        activeLink === link.path
+                          ? "bg-emerald-50 text-emerald-600 dark:bg-slate-800 dark:text-emerald-400"
+                          : "text-slate-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800"
+                      }`}
+                      onClick={() => {
+                        setActiveLink(link.path);
+                        setIsOpen(false);
+                      }}
+                    >
+                      {link.label}
+                    </Link>
+                  ))}
+                  
+                  {/* Register Button */}
+                  <Link href="/register" className="block mt-4">
+                    <motion.button
+                      whileTap={{ scale: 0.95 }}
+                      className="w-full bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white px-6 py-3 rounded-full flex items-center justify-center space-x-2 transition-all"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      <span>Daftar</span>
+                      <FiArrowRight className="w-4 h-4" />
+                    </motion.button>
+                  </Link>
+                </div>
               </div>
             </motion.div>
           </>
