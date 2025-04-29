@@ -80,14 +80,17 @@ export default function Navbar() {
               <Link
                 key={link.path}
                 href={link.path}
-                className={`px-4 py-2 rounded-lg font-bold transition-colors ${
+                className={`px-4 py-2 font-medium transition-colors relative group ${
                   activeLink === link.path
                     ? "text-emerald-600 dark:text-emerald-400"
-                    : "text-slate-700 hover:text-emerald-600 dark:text-slate-300 dark:hover:text-emerald-400"
+                    : "text-slate-700 dark:text-slate-300"
                 }`}
                 onClick={() => setActiveLink(link.path)}
               >
                 {link.label}
+                <span className={`absolute left-1/2 -bottom-1 w-0 h-0.5 bg-emerald-500 transition-all duration-300 group-hover:w-3/4 group-hover:left-1/8 ${
+                  activeLink === link.path ? "w-3/4 left-1/8" : ""
+                }`}></span>
               </Link>
             ))}
             <Link href="/register" className="ml-2">
@@ -177,7 +180,7 @@ export default function Navbar() {
                     <Link
                       key={link.path}
                       href={link.path}
-                      className={`block px-4 py-3 rounded-lg font-bold text-lg ${
+                      className={`block px-4 py-3 rounded-lg font-medium text-lg relative group ${
                         activeLink === link.path
                           ? "bg-emerald-50 text-emerald-600 dark:bg-slate-800 dark:text-emerald-400"
                           : "text-slate-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800"
@@ -188,10 +191,13 @@ export default function Navbar() {
                       }}
                     >
                       {link.label}
+                      <span className={`absolute left-4 bottom-2 w-0 h-0.5 bg-emerald-500 transition-all duration-300 group-hover:w-[calc(100%-2rem)] ${
+                        activeLink === link.path ? "w-[calc(100%-2rem)]" : ""
+                      }`}></span>
                     </Link>
                   ))}
                   
-                  {/* Register Button */}
+                  {/* Register Button inside menu */}
                   <Link href="/register" className="block mt-4">
                     <motion.button
                       whileTap={{ scale: 0.95 }}
