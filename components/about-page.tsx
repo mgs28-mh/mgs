@@ -61,7 +61,7 @@ export default function AboutPage() {
       </section>
 
       {/* About */}
-      <section id="about" className="py-20 bg-white dark:bg-slate-900">
+      <section id="about" className="py-20 bg-gradient-to-b dark:from-slate-900 dark:to-slate-800">
         <div className="container mx-auto px-6">
           <motion.div 
             className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center"
@@ -141,7 +141,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="bg-gradient-to-b from-emerald-50 to-white dark:from-slate-900 dark:to-slate-800 py-24" id="values">
+      <section className="bg-gradient-to-b dark:from-slate-800 dark:to-slate-900 py-24" id="values">
       <div className="container mx-auto px-6 max-w-7xl">
         {/* Modern header with decorative elements */}
         <motion.div 
