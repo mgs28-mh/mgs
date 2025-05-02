@@ -71,7 +71,7 @@ export default function BlogPost() {
   }
 
   return (
-    <main className="flex min-h-screen flex-col items-center p-4 sm:p-12 md:p-24 bg-blend-darken">
+    <main className="flex min-h-screen flex-col items-center p-4 sm:p-12 md:p-24 bg-gradient-to-t from-emerald-50 to-white dark:from-emerald-900 dark:to-slate-900">
       <section className="w-full pt-6 sm:pt-12">
         <div className="mx-auto container space-y-8 sm:space-y-12 px-2 sm:px-4 md:px-6">
           <motion.div 

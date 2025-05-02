@@ -58,7 +58,7 @@ export default function Blog() {
   }
 
   return (
-    <main className="flex min-h-screen flex-col items-center p-4 sm:p-12 md:p-24 bg-blend-darken">
+    <main className="flex min-h-screen flex-col items-center p-4 sm:p-12 md:p-24 bg-gradient-to-t from-emerald-50 to-white dark:from-emerald-900 dark:to-slate-900">
       <section className="w-full pt-6 sm:pt-12">
         <div className="mx-auto container space-y-8 sm:space-y-12 px-2 sm:px-4 md:px-6">
           <motion.div 
@@ -68,7 +68,7 @@ export default function Blog() {
             className="flex flex-col items-center justify-center space-y-2 sm:space-y-4 text-center"
           >
             <div className="space-y-1 sm:space-y-2">
-              <h1 className="text-2xl sm:text-3xl font-bold tracking-tighter text-white">
+              <h1 className="text-3xl sm:text-3xl font-bold tracking-tighter text-white">
                 Blog & Artikel
               </h1>
               <p className="text-sm sm:text-base max-w-[900px] text-white md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">

@@ -4,7 +4,7 @@ import { FiArrowRight } from "react-icons/fi";
 
 export default function HomePage() {
   return (
-    <main className="relative min-h-screen bg-gradient-to-br from-slate-50 to-emerald-50 dark:from-slate-900 dark:to-emerald-900">
+    <main className="relative min-h-screen bg-gradient-to-b from-emerald-50 to-white dark:from-emerald-900 dark:to-slate-900">
       <section className="relative z-15 mx-auto px-10 py-40 flex flex-col items-center justify-center min-h-screen text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -15,7 +15,7 @@ export default function HomePage() {
             Wadah Kolaborasi
             <span className="text-emerald-300">
               {" "}
-              Mahasiswa{" "}
+              Mahasiswa Muslim{" "}
             </span>
             Berkualitas
           </h1>
